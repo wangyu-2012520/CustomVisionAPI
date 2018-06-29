@@ -4,7 +4,7 @@ from azure.cognitiveservices.vision.customvision.prediction import prediction_en
 from azure.cognitiveservices.vision.customvision.prediction.prediction_endpoint import models
 import time
 
-###################################### Access an existing Custom Vision Service project ######################################
+###################################### 1. Access an existing Custom Vision Service project ######################################
 
 # Replace with a valid key
 training_key = "67aab0c30d9c4e2d806b5d5e6e80ca57"
@@ -16,6 +16,10 @@ trainer = training_api.TrainingApi(training_key)
 # Access an existing project
 print ("Access an existing project...")
 project = trainer.get_project(project_id)
+
+
+###################################### 2. Access tags to project ################################################################
+
 
 # Access tags in existing project
 print ("Access tags...")
@@ -44,7 +48,7 @@ if JapaneseCherry_tag_count == 0:
 	print("Creating Tag Japanese Cherry")
 
 
-###################################### Upload images to the project ##########################################################
+###################################### 3. Upload images to the project ##########################################################
 base_image_url = "https://raw.githubusercontent.com/Microsoft/Cognitive-CustomVision-Windows/master/Samples/"
 
 print ("Adding images...")
@@ -73,7 +77,7 @@ for image_num in range(1,10):
 
 
 
-###################################### Training project ######################################################################
+###################################### 4. Training project ######################################################################
 print ("Training...")
 iteration = trainer.train_project(project.id)
 while (iteration.status != "Completed"):
@@ -87,8 +91,7 @@ print ("Done!")
 
 
 
-
-###################################### Get and use the default prediction endpoint ###########################################
+###################################### 5. Predict object ########################################################################
 
 # Now there is a trained endpoint that can be used to make a prediction
 predictor = prediction_endpoint.PredictionEndpoint(prediction_key)
