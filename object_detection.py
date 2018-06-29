@@ -7,8 +7,9 @@ import time
 
 ###################################### 1. Access an existing Custom Vision Service project ######################################
 # Replace with a valid key
-training_key = "<your training key>"
-prediction_key = "<your prediction key>"
+training_key = "67aab0c30d9c4e2d806b5d5e6e80ca57"
+prediction_key = "dcba629f05724d61a3b0b3c58f7c18c6"
+project_id = "a7ceb1ee-630f-403f-8fe7-f68e8e914233"
 
 trainer = training_api.TrainingApi(training_key)
 
@@ -121,4 +122,5 @@ with open("images/test/test_image.jpg", mode="rb") as test_data:
 
 # Display the results.
 for prediction in results.predictions:
-    print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100), prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
+    print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100))
+    	#, prediction.bounding_box.left, prediction.bounding_box.top, prediction.bounding_box.width, prediction.bounding_box.height)
